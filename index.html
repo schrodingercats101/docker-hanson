@@ -1,0 +1,82 @@
+<!-- コマンドの基本 -->
+docker 上位コマンド 副コマンド 対象
+
+上位コマンド（何を）（１２種類しかない）
+副コマンド（どうする）
+
+●基本形
+docker コマンド (option) 対象 (引数)
+
+●省略
+docker container run 
+docker run 省略形にすることができるものがある
+
+⚫︎オプション(まとめて反映)
+docker container run -d 
+docker container run -t 
+↓
+docker container run -dt 
+
+
+<!-- runコマンド -->
+docker container run (略:docker run)  
+↓下記コマンドをまとめて実行する↓
+docker image pull  
+docker container create  
+docker container start
+
+よく使うオプション
+docker run --name コンテナ名   コンテナ名を指定する
+docker run -p     ポート番号を指定する
+docker run -v      ボリュームをマウントする
+docker run --net    コンテナをネットワークに接続する
+docker run --dit 
+
+<!-- ditについて -->
+deamonとして動くコンテナにオプションとしてつける
+逆を返せば一度きりのコンテナにはつける必要がない
+
+-d バックグラウンドで実行する
+-i コンテナにキーボードを繋ぐ
+-t 特殊キーを使用可能にする
+
+<!-- deamonとは -->
+UNIXやLinux上で動くプログラムのうち
+常に動き続けるプログラムのこと
+
+<!-- rmコマンド -->
+docker rm コンテナ名
+
+コンテナの削除  
+停止しているコンテナのみ実行可能
+オプションや引数をしているすることは少ない
+
+<!-- stopコマンド -->
+docker stop コンテナ名
+
+コンテナの停止
+オプションや引数をしているすることは少ない
+
+
+<!-- psコマンド -->
+コンテナの起動時や停止時にステータスの確認をするために使う
+
+動いているコンテナの一覧を表示
+docker ps
+
+存在するコンテナの一覧を表示
+docker ps -a
+
+<!-- web上で動かす原理 -->
+apacheが動いているサーバー上にコンテナ配置すればwebサイトとして見ることが
+できるようになる
+docker run だけではwebサイトとして使うことはできない
+
+docker run -p ホストのポート番号:コンテナのポート番号
+で結びつけをすることによりwebサイトとして使えるようになる
+
+<!-- imageの削除 -->
+コンテナを削除してもimageは残り続ける
+
+docker image ls 
+docker image rm イメージ名 イメージ名 イメージ名
